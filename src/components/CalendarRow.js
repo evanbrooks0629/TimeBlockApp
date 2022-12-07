@@ -117,13 +117,13 @@ const Block = (props) => {
             >
                 <div style={{height: blockHeight, backgroundColor: props.color,  textAlign: 'left', width: '100%', display: 'flex', position: 'absolute', cursor: 'pointer', zIndex: zIndex}}>
                     <p style={{color: '#ffffff', width: '70%', alignItems: 'center', display: 'flex', textDecoration: completed ? 'line-through' : ''}}>&nbsp;{props.name}</p>
-                    <IconButton style={{float: 'right', width: '10%'}} onClick={editBlock} disabled={disabled}>
+                    <IconButton style={{float: 'right', width: '10%'}} onClick={editBlock} onTouchStart={editBlock} disabled={disabled}>
                         <CreateIcon style={{color: '#ffffff'}} />
                     </IconButton>
-                    <IconButton style={{float: 'right', width: '10%'}} onClick={handleDialogOpen} disabled={disabled}>
+                    <IconButton style={{float: 'right', width: '10%'}} onClick={handleDialogOpen} onTouchStart={handleDialogOpen} disabled={disabled}>
                         <DeleteIcon style={{color: '#ffffff'}} />
                     </IconButton>
-                    <Checkbox style={{float: 'right', width: '10%', color: '#ffffff'}} checked={completed} onChange={toggleCompleted} disabled={disabled} />
+                    <Checkbox style={{float: 'right', width: '10%', color: '#ffffff'}} checked={completed} onChange={toggleCompleted} onTouchStart={toggleCompleted} disabled={disabled} />
                 </div>
             </Draggable>
             <Dialog open={dialogOpen} onClose={handleDialogClose}>
