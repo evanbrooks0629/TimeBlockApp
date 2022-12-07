@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/TimeBlockApp/static/css/main.6d8fdba6.css",
-    "main.js": "/TimeBlockApp/static/js/main.688bbc9d.js",
+    "main.js": "/TimeBlockApp/static/js/main.f05994d2.js",
     "static/js/787.844d3879.chunk.js": "/TimeBlockApp/static/js/787.844d3879.chunk.js",
     "index.html": "/TimeBlockApp/index.html",
     "main.6d8fdba6.css.map": "/TimeBlockApp/static/css/main.6d8fdba6.css.map",
-    "main.688bbc9d.js.map": "/TimeBlockApp/static/js/main.688bbc9d.js.map",
+    "main.f05994d2.js.map": "/TimeBlockApp/static/js/main.f05994d2.js.map",
     "787.844d3879.chunk.js.map": "/TimeBlockApp/static/js/787.844d3879.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6d8fdba6.css",
-    "static/js/main.688bbc9d.js"
+    "static/js/main.f05994d2.js"
   ]
 }
