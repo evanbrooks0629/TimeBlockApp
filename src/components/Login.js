@@ -21,7 +21,7 @@ class Login extends Component {
         this.props.signIn(this.state);
         myFirebase.auth().onAuthStateChanged(user => {
             if (user) {
-                this.props.navigate('/TimeBlockApp/dashboard');
+                this.props.navigate('/dashboard');
             }
         })
     }

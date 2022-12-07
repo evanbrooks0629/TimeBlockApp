@@ -19,7 +19,7 @@ const Signup = (props) => {
         props.signUp(state);
         myFirebase.auth().onAuthStateChanged(user => {
             if (user) {
-                navigate('/TimeBlockApp/dashboard');
+                navigate('/dashboard');
             }
         })
     }
