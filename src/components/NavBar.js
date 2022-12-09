@@ -287,7 +287,7 @@ const NavBar = (props) => {
 
                         </Menu>
                     </Box>
-                    <Box sx={{ flexGrow: 1, display: 'flex', backgroundColor: '#8C52FF', height: '42px', borderRadius: '10px', marginLeft: '5px', marginRight: '7px'}}>
+                    <Box sx={{ flexGrow: 1, display: 'flex', backgroundColor: '#8C52FF', height: '42px', borderRadius: '10px', marginLeft: '5px', marginRight: '7px', width: '100%'}}>
                         <Typography variant="h5" style={{color: '#ffffff', marginLeft: '15px', marginTop: '5px'}}>{dashboardTitle}</Typography>
                     </Box>
                     <Box sx={{ flexGrow: 0 }}></Box>

@@ -268,12 +268,12 @@ const WeekCalendar = (props) => {
         <Grid container>
             <Grid item container xs={12}>
 
-                <Grid item sx={{ display: {xs: 'none', sm: 'block'} }} sm={2} md={4} />
-                <Grid item xs={8} sm={6} md={4} align="left">
+                <Grid item sx={{ display: {xs: 'none', sm: 'block', md: 'block'} }} sm={1} md={4} />
+                <Grid item xs={8} sm={7} md={4} sx={{ textAlign: { xs: 'left', md: 'center' } }}>
                     <Typography sx={{ fontSize: { xs: '18px', sm: '20px' }, marginTop: { xs: '2px', sm: '0px' } }} style={{color: '#ffffff'}}>{months[monthIndex-1]}</Typography>
                     <Typography sx={{ fontSize: { xs: '16px', sm: '20px' }, marginTop: { xs: '5px', sm: '0px' } }} style={{color: '#cccccc'}}>{monthIndex}/{arrayOfDays.slice(weekStartIndex, weekEndIndex)[0].date} - {monthIndex}/{arrayOfDays.slice(weekStartIndex, weekEndIndex)[6].date}</Typography>
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={4} md={4} align="right">
                     <FormControl>
                         <Select
                             labelId="demo-simple-select-label"

@@ -125,8 +125,8 @@ const DayCalendar = (props) => {
     return (
         <Grid container>
             <Grid item container xs={12}>
-                <Grid item xs={2} />
-                <Grid item xs={6} align="left">
+                <Grid item xs={2} sm={3} md={4} />
+                <Grid item xs={6} sm={5} md={4} align="left">
                     <Typography variant="h5" style={{color: '#ffffff'}}>{months[monthIndex-1]}</Typography>
                 </Grid>
                 <Grid item xs={4} align="right">

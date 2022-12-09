@@ -92,6 +92,10 @@ const CalendarRow = (props) => {
                     <ArrowCircleRightIcon style={{color: '#ffffff'}} fontSize="inherit" />
                 </IconButton>
             </Grid>
+            <IconButton sx={{display: {xs: 'block', sm: 'none'}}} style={{marginTop: '16px', position: 'absolute', left: 0, marginLeft: '-3px'}} size="small" onClick={handleClick}>
+                <ArrowCircleRightIcon style={{color: '#ffffff'}} fontSize="inherit" />
+            </IconButton>
+            
             <Grid item xs>
                 <CalendarItem day={props.days[0]} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
