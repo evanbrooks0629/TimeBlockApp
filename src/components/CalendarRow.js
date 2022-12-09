@@ -533,7 +533,7 @@ const CalendarRow = (props) => {
             </Grid>
             
             <Grid item xs={4} sx={{ display: {xs: 'flex', sm: 'none' }}} />
-            <Grid item xs={4} sx={{ display: {xs: 'flex', sm: 'none' }}} align="center" style={{ position: 'fixed', bottom: '0', marginBottom: '10px', zIndex: 20000}}>
+            <Grid item xs={4} sx={{ display: {xs: 'flex', sm: 'none' }}} align="center" style={{ position: 'fixed', bottom: '0', marginBottom: '65px', zIndex: 20000, marginLeft: '10px'}}>
                 <IconButton variant="contained" onClick={handleDialogOpen} style={{textTransform: 'none', backgroundColor: '#8c52ff', color: '#ffffff', borderRadius: '40px', marginBottom: '0px', height: '80px', width: '80px'}}>
                     <AddIcon style={{color: '#ffffff'}} />
                 </IconButton>

@@ -11,8 +11,8 @@ import { monthOffsets } from '../data_functions/monthOffsets';
 
 const MonthBlock = (props) => {
     return (
-        <Grid item xs={2} sx={{ height: { xs: '6px', sm: '12px', md: '20px' }, marginBottom: { xs: '1px', md: '5px' } }}>
-            {props.completed ? <CheckCircleIcon style={{color: props.color, fontSize: '1.25vw'}} /> : <CircleIcon style={{color: props.color, fontSize: '1.25vw'}} />}
+        <Grid item xs={2} sx={{ height: { xs: '6px', sm: '12px', md: '20px' }, marginBottom: { xs: '3px', md: '5px' } }}>
+            {props.completed ? <CheckCircleIcon sx={{fontSize: {xs: '1.8vw', md: '1.5vw'}}} style={{color: props.color}} /> : <CircleIcon sx={{fontSize: {xs: '1.8vw', md: '1.5vw'}}} style={{color: props.color}} />}
         </Grid>
     );
 }
@@ -241,7 +241,7 @@ const MonthCalendar = (props) => {
             <Grid item container xs={12}>
                 <Grid item sx={{ display: {xs: 'none', sm: 'block'} }} sm={2} md={4} />
                 <Grid item container xs={9} sm={6} md={4} style={{marginTop: '10px'}}>
-                    <Grid item xs={4} align="left">
+                    <Grid item sx={{ display: { xs: 'none', sm: 'block' } }} xs={4} sm={4} align="left">
                         <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#8C52FF", height: "35px", width: "35px", backgroundColor: "#220f49"}} onClick={handlePrevMonth} >
                             {
                                 // Go to prev month
@@ -249,10 +249,10 @@ const MonthCalendar = (props) => {
                             <ArrowBackIosNewIcon />
                         </IconButton>
                     </Grid>
-                    <Grid item xs={4} align="center">
-                        <Typography sx={{ fontSize: { xs: '16px', sm: '20px' }, marginTop: { xs: '5px', sm: '0px' } }} style={{color: '#ffffff'}}>{months[monthIndex-1]}</Typography>
+                    <Grid item sx={{ textAlign: { xs: 'left', sm: 'center' } }} xs={12} sm={4}>
+                        <Typography variant="h5" sx={{ marginTop: { xs: '5px', sm: '0px' } }} style={{color: '#ffffff'}}>{months[monthIndex-1]}</Typography>
                     </Grid>
-                    <Grid item xs={4} align="right">
+                    <Grid item sx={{ display: { xs: 'none', sm: 'block' } }} xs={4} sm={4} align="right">
                         <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#8C52FF", height: "35px", width: "35px", backgroundColor: "#220f49"}} onClick={handleNextMonth} >
                             {
                                 // Go to next month
@@ -322,6 +322,20 @@ const MonthCalendar = (props) => {
                 </Grid>
             </Grid>
             <Grid item xs={12} style={{height: '100px'}} />
+
+            <Grid item container sx={{ display: {xs: 'flex', sm: 'none' }}} style={{ position: 'fixed', bottom: '0', marginBottom: '10px' }} xs={12}>
+                <Grid item xs={4}>
+                    <IconButton style={{backgroundColor: '#8C52FF', marginRight: '10px'}} size="large" onClick={handlePrevMonth}>
+                        <ArrowBackIosNewIcon style={{color: '#ffffff'}} fontSize="inherit" />
+                    </IconButton>
+                </Grid>
+                <Grid item xs={4}></Grid>
+                <Grid item xs={4}>
+                    <IconButton style={{backgroundColor: '#8C52FF', marginRight: '70px'}} size="large" onClick={handleNextMonth}>
+                        <ArrowForwardIosIcon style={{color: '#ffffff'}} fontSize="inherit" />
+                    </IconButton>
+                </Grid>
+            </Grid>
             
         </Grid>
     );

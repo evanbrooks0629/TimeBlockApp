@@ -185,7 +185,7 @@ const DayCalendar = (props) => {
             </Grid>
             <Grid item xs={12} style={{height: '100px'}} />
 
-            <Grid item container sx={{ display: {xs: 'flex', sm: 'none' }, flexDirection: 'row', justifyContent: "space-between"}} style={{ position: 'fixed', bottom: '0', marginBottom: '10px' }} xs={12}>
+            <Grid item container sx={{ display: {xs: 'flex', sm: 'none' }, flexDirection: 'row', justifyContent: "space-between"}} style={{ position: 'fixed', bottom: '0', marginBottom: '10px', zIndex: 2000}} xs={12}>
                 <Grid item xs={4}>
                     <IconButton style={{backgroundColor: '#8C52FF', marginRight: '20px'}} size="large" onClick={handlePrevDay}>
                         <ArrowBackIosNewIcon style={{color: '#ffffff'}} fontSize="inherit" />

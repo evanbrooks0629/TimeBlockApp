@@ -1,5 +1,8 @@
 import React from 'react';
-import { Grid, Box, Tabs, Tab } from '@mui/material';
+import { Grid, Box, Tabs, Tab, IconButton } from '@mui/material';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import CalendarViewWeekIcon from '@mui/icons-material/CalendarViewWeek';
+import ViewDay from '@mui/icons-material/ViewDay';
 import { useSelector, connect } from 'react-redux';
 import { compose } from 'redux';
 import {firestoreConnect, getFirebase} from "react-redux-firebase";
@@ -141,6 +144,20 @@ const Dashboard = (props) => {
                 </TabPanel> */}
 
             </Box>
+
+            <Grid item xs={4} sx={{ display: {xs: 'inline-flex', sm: 'none'} }} />
+            <Grid item xs={4} sx={{ display: {xs: 'inline-flex', sm: 'none' }}} style={{position: 'fixed', bottom: 0, marginBottom: '10px', zIndex: 2000}}>
+                <IconButton style={{backgroundColor: '#8C52FF', marginLeft: '-65px', marginRight: '10px', borderRadius: '25px', marginBottom: '5px'}} size="medium" onClick={() => setTabValue(0)}>
+                    <CalendarMonthIcon style={{color: '#ffffff', fontSize: 'inherit'}} />
+                </IconButton>
+                <IconButton style={{backgroundColor: '#8C52FF', marginRight: '10px', borderRadius: '25px', marginBottom: '5px'}} size="medium" onClick={() => setTabValue(1)}>
+                    <CalendarViewWeekIcon style={{color: '#ffffff', fontSize: 'inherit'}} />
+                </IconButton>
+                <IconButton style={{backgroundColor: '#8C52FF', marginRight: '10px', borderRadius: '25px', marginBottom: '5px'}} size="medium" onClick={() => setTabValue(2)}>
+                    <ViewDay style={{color: '#ffffff', fontSize: 'inherit'}} />
+                </IconButton>
+            </Grid>
+            <Grid item xs={4} sx={{ display: {xs: 'inline-flex', sm: 'none'} }} />
             
         </div>
     );
