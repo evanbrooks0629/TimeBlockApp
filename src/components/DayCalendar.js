@@ -125,8 +125,8 @@ const DayCalendar = (props) => {
     return (
         <Grid container>
             <Grid item container xs={12}>
-                <Grid item xs={4} />
-                <Grid item xs={4}>
+                <Grid item xs={2} />
+                <Grid item xs={6} align="left">
                     <Typography variant="h5" style={{color: '#ffffff'}}>{months[monthIndex-1]}</Typography>
                 </Grid>
                 <Grid item xs={4} align="right">
@@ -169,13 +169,13 @@ const DayCalendar = (props) => {
             <Grid container item xs={12}>
                 <Grid item xs={12} container spacing={1}>
                 <Grid item container spacing={0} xs={12} justifyContent="center">
-                    <Grid item xs={1}>
+                    <Grid item sx={{ display: {xs: 'none', sm: 'block'} }} sm={1}>
                         <IconButton style={{marginTop: '16px'}} size="large" onClick={handlePrevDay}>
                             <ArrowBackIosNewIcon style={{color: '#ffffff'}} fontSize="inherit" />
                         </IconButton>
                     </Grid>
                     <CalendarRow days={arrayOfDays} dayIndex={day} monthIndex={monthIndex} currYear={currYear} blocks={props.blocks} updateBlocks={props.updateBlocks} />
-                    <Grid item xs={1}>
+                    <Grid item sx={{ display: {xs: 'none', sm: 'block'} }} sm={1}>
                         <IconButton style={{marginTop: '16px'}} size="large" onClick={handleNextDay}>
                             <ArrowForwardIosIcon style={{color: '#ffffff'}} fontSize="inherit" />
                         </IconButton>
@@ -184,6 +184,19 @@ const DayCalendar = (props) => {
                 </Grid>
             </Grid>
             <Grid item xs={12} style={{height: '100px'}} />
+
+            <Grid item container sx={{ display: {xs: 'flex', sm: 'none' }, flexDirection: 'row', justifyContent: "space-between"}} style={{ position: 'fixed', bottom: '0', marginBottom: '10px' }} xs={12}>
+                <Grid item xs={4}>
+                    <IconButton style={{backgroundColor: '#8C52FF', marginRight: '20px'}} size="large" onClick={handlePrevDay}>
+                        <ArrowBackIosNewIcon style={{color: '#ffffff'}} fontSize="inherit" />
+                    </IconButton>
+                </Grid>
+                <Grid item xs={4}>
+                    <IconButton style={{backgroundColor: '#8C52FF', marginRight: '70px'}} size="large" onClick={handleNextDay}>
+                        <ArrowForwardIosIcon style={{color: '#ffffff'}} fontSize="inherit" />
+                    </IconButton>
+                </Grid>
+            </Grid>
             
         </Grid>
     );

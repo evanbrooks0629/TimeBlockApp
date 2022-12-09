@@ -523,16 +523,24 @@ const CalendarRow = (props) => {
     }
 
     return (
-        <React.Fragment>
-            <Grid item xs={1} />
-            <Grid item xs={1}>
+        <>
+            <Grid item sx={{display: {xs: 'none', sm: 'block'}}} xs={1} />
+            <Grid item xs={2} sm={1}>
                 <HatchMarks />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={10} sm={6} md={4}>
                 <DayItem day={props.days[props.dayIndex]} blocks={props.blocks} handleEdit={handleEdit} handleDelete={handleDelete} handleCompleted={handleCompleted} updateYPos={updateYPos} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={2}>
-                <Button variant="contained" onClick={handleDialogOpen} style={{marginTop: '290px', textTransform: 'none', backgroundColor: '#8c52ff', color: '#ffffff', borderRadius: '10px'}} endIcon={<AddIcon />}>Add Block</Button>
+            
+            <Grid item xs={4} sx={{ display: {xs: 'flex', sm: 'none' }}} />
+            <Grid item xs={4} sx={{ display: {xs: 'flex', sm: 'none' }}} align="center" style={{ position: 'fixed', bottom: '0', marginBottom: '10px', zIndex: 20000}}>
+                <IconButton variant="contained" onClick={handleDialogOpen} style={{textTransform: 'none', backgroundColor: '#8c52ff', color: '#ffffff', borderRadius: '40px', marginBottom: '0px', height: '80px', width: '80px'}}>
+                    <AddIcon style={{color: '#ffffff'}} />
+                </IconButton>
+            </Grid>
+            <Grid item xs={4} sx={{ display: {xs: 'flex', sm: 'none' }}} />
+            <Grid item sx={{display: {xs: 'none', sm: 'block'}}} xs={2}>
+                <Button variant="contained" sx={{fontSize: {xs: '12px'} }} onClick={handleDialogOpen} style={{marginTop: '290px', textTransform: 'none', backgroundColor: '#8c52ff', color: '#ffffff', borderRadius: '10px'}} endIcon={<AddIcon />}>Add Block</Button>
 
                 {
                     // ADD DIALOG
@@ -724,7 +732,9 @@ const CalendarRow = (props) => {
                     </DialogActions>
                 </Dialog>
             </Grid>
-        </React.Fragment>
+
+            
+        </>
     );
 }
 

@@ -321,7 +321,7 @@ const NavBar = (props) => {
                             horizontal: 'right',
                         }}
                         open={Boolean(anchorElUser)}
-                        onClose={handleCloseUserMenu}
+                        onClose={() => handleCloseUserMenu(0)}
                         >
                         <MenuItem key={currentCalendar} onClick={() => handleCloseUserMenu(currentCalendar.id)}>
                             <ListItemText textAlign="left" style={{marginRight: '10px'}}>{currentCalendar.name}</ListItemText>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography, IconButton, FormControl, Select, MenuItem, Paper } from '@mui/material';
+import { Grid, Box, Typography, IconButton, FormControl, Select, MenuItem, Paper } from '@mui/material';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
@@ -11,7 +11,7 @@ import { monthOffsets } from '../data_functions/monthOffsets';
 
 const MonthBlock = (props) => {
     return (
-        <Grid item xs={2} style={{height: '20px', marginBottom: '5px'}}>
+        <Grid item xs={2} sx={{ height: { xs: '6px', sm: '12px', md: '20px' }, marginBottom: { xs: '1px', md: '5px' } }}>
             {props.completed ? <CheckCircleIcon style={{color: props.color, fontSize: '1.25vw'}} /> : <CircleIcon style={{color: props.color, fontSize: '1.25vw'}} />}
         </Grid>
     );
@@ -61,11 +61,11 @@ const CalendarItem = (props) => {
     }
 
     return (
-        <Paper style={{height: '110px', textAlign: 'center', borderRadius: '0px', color: color, border: '1px solid #000000', width: '100%'}} onClick={handleClick}>
-            <div style={{height: '25px', width: '25px', borderRadius: '20px', backgroundColor: circleColor, margin: '3px'}}>
+        <Paper sx={{ height: { xs: '50px', sm: '80px', md: '110px' } }} style={{ textAlign: 'center', borderRadius: '0px', color: color, border: '1px solid #000000', width: '100%'}} onClick={handleClick}>
+            <Box sx={{ height: { xs: '15px', sm: '20px', md: '25px' }, width: { xs: '15px', sm: '20px', md: '25px' }, fontSize: { xs: '10px', sm: '12px', md: '16px' } }} style={{borderRadius: '20px', backgroundColor: circleColor, margin: '3px'}}>
                 {dateNum}
-            </div>
-            <Grid container style={{marginTop: '5px', width: '100%'}}>
+            </Box>
+            <Grid container sx={{ marginTop: { xs: '-10px', sm: '0px', md: '5px' } }} style={{width: '100%'}}>
             {
                 
                 sortedBlocks.map((block, index) => (
@@ -86,34 +86,34 @@ const CalendarRow = (props) => {
     }
 
     return (
-        <Grid item container spacing={0} xs={12} justifyContent="center">
-            <Grid item xs={1}>
+        <Grid item container spacing={0} xs={12} display="flex" justifyContent="center" style={{width: '100%'}}>
+            <Grid item sx={{ display: {xs: 'none', sm: 'block'} }} xs>
                 <IconButton style={{marginTop: '16px'}} size="large" onClick={handleClick}>
                     <ArrowCircleRightIcon style={{color: '#ffffff'}} fontSize="inherit" />
                 </IconButton>
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <CalendarItem day={props.days[0]} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <CalendarItem day={props.days[1]} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <CalendarItem day={props.days[2]} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <CalendarItem day={props.days[3]} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <CalendarItem day={props.days[4]} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <CalendarItem day={props.days[5]} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <CalendarItem day={props.days[6]} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1} />
+            <Grid item sx={{ display: {xs: 'none', sm: 'block'} }} xs />
             
         </Grid>
     );
@@ -235,9 +235,9 @@ const MonthCalendar = (props) => {
     return (
         <Grid container>
             <Grid item container xs={12}>
-                <Grid item xs={4} />
-                <Grid item container xs={4} style={{marginTop: '10px'}}>
-                    <Grid item xs={4}>
+                <Grid item sx={{ display: {xs: 'none', sm: 'block'} }} sm={2} md={4} />
+                <Grid item container xs={9} sm={6} md={4} style={{marginTop: '10px'}}>
+                    <Grid item xs={4} align="left">
                         <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#8C52FF", height: "35px", width: "35px", backgroundColor: "#220f49"}} onClick={handlePrevMonth} >
                             {
                                 // Go to prev month
@@ -245,10 +245,10 @@ const MonthCalendar = (props) => {
                             <ArrowBackIosNewIcon />
                         </IconButton>
                     </Grid>
-                    <Grid item xs={4}>
-                        <Typography variant="h5" style={{color: '#ffffff'}}>{months[monthIndex-1]}</Typography>
+                    <Grid item xs={4} align="center">
+                        <Typography sx={{ fontSize: { xs: '16px', sm: '20px' }, marginTop: { xs: '5px', sm: '0px' } }} style={{color: '#ffffff'}}>{months[monthIndex-1]}</Typography>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={4} align="right">
                         <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#8C52FF", height: "35px", width: "35px", backgroundColor: "#220f49"}} onClick={handleNextMonth} >
                             {
                                 // Go to next month
@@ -257,7 +257,7 @@ const MonthCalendar = (props) => {
                         </IconButton>
                     </Grid>
                 </Grid>
-                <Grid item xs={4} align="right">
+                <Grid item xs={3} sm={4} align="right">
                     <FormControl>
                         <Select
                             labelId="demo-simple-select-label"

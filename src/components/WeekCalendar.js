@@ -45,10 +45,10 @@ const WeekBlock = (props) => {
     return (
         <Grid container style={{textAlign: 'left', width: '95%', display: 'flex', position: 'relative',  marginLeft: '2.5%', marginBottom: '3px', backgroundColor: props.color, borderRadius: '5px'}}>
             <Grid item xs={12} style={{height: '12px'}}>
-                <p style={{color: '#ffffff', fontSize: '12px', paddingLeft: '5px', marginTop: '5px', textDecoration: props.completed ? 'line-through' : ''}}>{truncatedName}</p>
+                <Typography sx={{fontSize: { xs: '7px', sm: '8px', md: '12px' }}} style={{color: '#ffffff', paddingLeft: '5px', marginTop: '5px', textDecoration: props.completed ? 'line-through' : ''}}>{truncatedName}</Typography>
             </Grid>
             <Grid item xs={12} style={{height: '35px'}}>
-                <p style={{color: '#ffffff', fontSize: '12px', paddingLeft: '5px'}}>{startTimeStr} - {endTimeStr}</p>
+                <Typography sx={{fontSize: { xs: '6px', sm: '7px', md: '11px' }, marginTop: {xs: '12px', sm: '20px', md: '18px'}}} style={{color: '#ffffff', paddingLeft: '5px'}}>{startTimeStr} - {endTimeStr}</Typography>
             </Grid>
         </Grid>
     );
@@ -115,29 +115,29 @@ const DayItem = (props) => {
 const CalendarRow = (props) => {
 
     return (
-        <React.Fragment>
-            <Grid item xs={1}>
+        <>
+            <Grid item xs>
                 <DayItem day={props.days[0]} offset={0} start={props.startIndex} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <DayItem day={props.days[1]} offset={1} start={props.startIndex} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <DayItem day={props.days[2]} offset={2} start={props.startIndex} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <DayItem day={props.days[3]} offset={3} start={props.startIndex} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <DayItem day={props.days[4]} offset={4} start={props.startIndex} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <DayItem day={props.days[5]} offset={5} start={props.startIndex} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-            <Grid item xs={1}>
+            <Grid item xs>
                 <DayItem day={props.days[6]} offset={6} start={props.startIndex} handleDayClick={props.getDay} blocks={props.blocks} monthIndex={props.monthIndex} currYear={props.currYear} />
             </Grid>
-        </React.Fragment>
+        </>
     );
 }
 
@@ -267,9 +267,11 @@ const WeekCalendar = (props) => {
     return (
         <Grid container>
             <Grid item container xs={12}>
-                <Grid item xs={4} />
-                <Grid item xs={4}>
-                    <Typography variant="h5" style={{color: '#ffffff'}}>{months[monthIndex-1]}</Typography>
+
+                <Grid item sx={{ display: {xs: 'none', sm: 'block'} }} sm={2} md={4} />
+                <Grid item xs={8} sm={6} md={4} align="left">
+                    <Typography sx={{ fontSize: { xs: '18px', sm: '20px' }, marginTop: { xs: '2px', sm: '0px' } }} style={{color: '#ffffff'}}>{months[monthIndex-1]}</Typography>
+                    <Typography sx={{ fontSize: { xs: '16px', sm: '20px' }, marginTop: { xs: '5px', sm: '0px' } }} style={{color: '#cccccc'}}>{monthIndex}/{arrayOfDays.slice(weekStartIndex, weekEndIndex)[0].date} - {monthIndex}/{arrayOfDays.slice(weekStartIndex, weekEndIndex)[6].date}</Typography>
                 </Grid>
                 <Grid item xs={4} align="right">
                     <FormControl>
@@ -312,23 +314,35 @@ const WeekCalendar = (props) => {
                 <Grid item xs={12} container spacing={1}>
                     <DOTWRow />
                 </Grid>
-                <Grid item xs={12} container spacing={1}>
-                <Grid item container spacing={0} xs={12} justifyContent="center">
-                    <Grid item xs={1}>
+                <Grid item container xs={12} justifyContent="center">
+                    <Grid item sx={{ display: {xs: 'none', sm: 'block'} }} xs>
                         <IconButton style={{marginTop: '16px'}} size="large" onClick={handlePrevWeek}>
                             <ArrowBackIosNewIcon style={{color: '#ffffff'}} fontSize="inherit" />
                         </IconButton>
                     </Grid>
                     <CalendarRow days={arrayOfDays.slice(weekStartIndex, weekEndIndex)} startIndex={weekStartIndex} endIndex={weekEndIndex} getDay={props.handleClickDay} blocks={props.blocks} monthIndex={monthIndex} currYear={currYear} />
-                    <Grid item xs={1}>
+                    <Grid item sx={{ display: {xs: 'none', sm: 'block'} }} xs>
                         <IconButton style={{marginTop: '16px'}} size="large" onClick={handleNextWeek}>
                             <ArrowForwardIosIcon style={{color: '#ffffff'}} fontSize="inherit" />
                         </IconButton>
                     </Grid>
                 </Grid>
-                </Grid>
             </Grid>
             <Grid item xs={12} style={{height: '100px'}} />
+
+            <Grid item container sx={{ display: {xs: 'flex', sm: 'none' }}} style={{ position: 'fixed', bottom: '0', marginBottom: '10px' }} xs={12}>
+                <Grid item xs={4}>
+                    <IconButton style={{backgroundColor: '#8C52FF', marginRight: '10px'}} size="large" onClick={handlePrevWeek}>
+                        <ArrowBackIosNewIcon style={{color: '#ffffff'}} fontSize="inherit" />
+                    </IconButton>
+                </Grid>
+                <Grid item xs={4}></Grid>
+                <Grid item xs={4}>
+                    <IconButton style={{backgroundColor: '#8C52FF', marginRight: '70px'}} size="large" onClick={handleNextWeek}>
+                        <ArrowForwardIosIcon style={{color: '#ffffff'}} fontSize="inherit" />
+                    </IconButton>
+                </Grid>
+            </Grid>
             
         </Grid>
     );
