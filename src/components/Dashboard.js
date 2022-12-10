@@ -147,7 +147,7 @@ const Dashboard = (props) => {
 
             <Grid item xs={4} sx={{ display: {xs: 'inline-flex', sm: 'none'} }} />
             <Grid item xs={4} sx={{ display: {xs: 'inline-flex', sm: 'none' }}} style={{position: 'fixed', bottom: 0, marginBottom: '10px', zIndex: 2000}}>
-                <IconButton style={{backgroundColor: '#8C52FF', marginLeft: '-65px', marginRight: '10px', borderRadius: '25px', marginBottom: '5px'}} size="medium" onClick={() => setTabValue(0)}>
+                <IconButton style={{backgroundColor: '#8C52FF', marginLeft: '-70px', marginRight: '10px', borderRadius: '25px', marginBottom: '5px'}} size="medium" onClick={() => setTabValue(0)}>
                     <CalendarMonthIcon style={{color: '#ffffff', fontSize: 'inherit'}} />
                 </IconButton>
                 <IconButton style={{backgroundColor: '#8C52FF', marginRight: '10px', borderRadius: '25px', marginBottom: '5px'}} size="medium" onClick={() => setTabValue(1)}>
@@ -156,6 +156,14 @@ const Dashboard = (props) => {
                 <IconButton style={{backgroundColor: '#8C52FF', marginRight: '10px', borderRadius: '25px', marginBottom: '5px'}} size="medium" onClick={() => setTabValue(2)}>
                     <ViewDay style={{color: '#ffffff', fontSize: 'inherit'}} />
                 </IconButton>
+            </Grid>
+            <Grid item xs={4} sx={{ display: {xs: 'inline-flex', sm: 'none'} }} />
+
+            <Grid item xs={4} sx={{ display: {xs: 'inline-flex', sm: 'none'} }} />
+            <Grid item xs={4} sx={{ display: {xs: 'inline-flex', sm: 'none' }}} alignItems="center" style={{position: 'fixed', bottom: 0, marginBottom: '10px', zIndex: 2000}}>
+                <div style={{ width: '40px', height: '3px', backgroundColor: tabValue === 0 ? '#8C52FF' : 'transparent', marginLeft: '-70px', marginRight: '10px', marginBottom: '-5px' }}></div>
+                <div style={{ width: '40px', height: '3px', backgroundColor: tabValue === 1 ? '#8C52FF' : 'transparent', marginRight: '10px', marginBottom: '-5px'}}></div>
+                <div style={{ width: '40px', height: '3px', backgroundColor: tabValue === 2 ? '#8C52FF' : 'transparent', marginBottom: '-5px' }}></div>
             </Grid>
             <Grid item xs={4} sx={{ display: {xs: 'inline-flex', sm: 'none'} }} />
             

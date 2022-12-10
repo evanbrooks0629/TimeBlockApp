@@ -332,7 +332,7 @@ const WeekCalendar = (props) => {
 
             <Grid item container sx={{ display: {xs: 'flex', sm: 'none' }}} style={{ position: 'fixed', bottom: '0', marginBottom: '10px' }} xs={12}>
                 <Grid item xs={4}>
-                    <IconButton style={{backgroundColor: '#8C52FF', marginRight: '10px'}} size="large" onClick={handlePrevWeek}>
+                    <IconButton style={{backgroundColor: '#8C52FF', marginRight: '10px', marginLeft: '-15px'}} size="large" onClick={handlePrevWeek}>
                         <ArrowBackIosNewIcon style={{color: '#ffffff'}} fontSize="inherit" />
                     </IconButton>
                 </Grid>
