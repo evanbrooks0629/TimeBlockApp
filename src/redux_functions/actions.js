@@ -163,15 +163,32 @@ export const deleteBlock = (blockID) => {
 }
 
 export const addCalendar = (calendar) => {
+    console.log(calendar);
     return (dispatch, getState, {getFirebase, getFirestore}) => {
         const firebase = getFirebase();
         const firestore = getFirestore();
         const user = firebase.auth().currentUser;
         if (user) {
-            firestore.collection('users').doc(user.uid).collection('calendars').add(calendar).then((docRef) => {
-                firestore.collection('team-calendars').doc(docRef.id).set(calendar);
-                firestore.collection('team-calendars').doc(docRef.id).collection('users').doc(user.uid).set({name: 'user'});
+            firestore.collection('users').doc(user.uid).collection('calendars').add(calendar)
+                .then((docRef) => {
+                    firestore.collection('team-calendars').doc(docRef.id).set(calendar);
+                    firestore.collection('team-calendars').doc(docRef.id).collection('users').doc(user.uid).set({name: 'user'});
             });
+
+            console.log('breaky');
+
+            for (let i = 0; i < calendar.collaborators.length; i++) {
+                console.log("Email: " + calendar.collaborators[i]);
+
+                const currPerson = firebase.getAuth().getUserByEmail(calendar.collaborators[i]);
+                firestore.collection('users').doc(currPerson.uid).collection('calendars').add(calendar)
+                    .then((docRef) => {
+                        firestore.collection('team-calendars').doc(docRef.id).collection('users').doc(calendar.collaborators[i]).set({name: 'user'});
+                    })
+                    .catch((err) => {
+                        console.log("Error: Invalid Email Address");
+                    })
+            }
         }
     }
 }
@@ -185,6 +202,9 @@ export const editCalendar = (calendar) => {
             firestore.collection('users').doc(user.uid).collection('calendars').doc(calendar.id).set(calendar).then(() => {
                 firestore.collection('team-calendars').doc(calendar.id).set(calendar);
             });
+        }
+        if (calendar.collaborators.length > 0) {
+            // for each collaborator, look for them in the db and add calendar to their calendars
         }
     }
 }

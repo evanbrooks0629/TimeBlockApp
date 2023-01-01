@@ -112,10 +112,12 @@ const NavBar = (props) => {
     };
 
     const handleAdd = () => {
-        let arr = [...values]
-        arr.push(currValue);
-        setValues(arr);
-        setCurrValue("");
+        if (currValue !== "") {
+            let arr = [...values];
+            arr.push(currValue);
+            setValues(arr);
+            setCurrValue("");
+        }
     }
 
     const handleDelete = (item, index) =>{
@@ -163,6 +165,7 @@ const NavBar = (props) => {
 
     const editCalendar = () => {
         if (calendarName !== "") {
+            setSettingsDialogOpen(false);
             props.editCalendar({
                 id: activeID,
                 name: calendarName,
@@ -171,7 +174,6 @@ const NavBar = (props) => {
             });
             setCalendarName("");
             setValues([]);
-            setSettingsDialogOpen(false);
         }
     }
 
@@ -186,11 +188,13 @@ const NavBar = (props) => {
     }
 
     const handleSettingsDialogOpen = () => {
-        handleCloseSettingsMenu(false);
-        setCalendarName(displayCalendars === [] ? "" : currentCalendar.name);
-        setValues(displayCalendars === [] ? [] : currentCalendar.collaborators);
-        setActiveID(displayCalendars === [] ? 0 : currentCalendar.id);
-        setSettingsDialogOpen(true);
+        if (currentCalendar.id !== 0) {
+            handleCloseSettingsMenu(false);
+            setCalendarName(displayCalendars === [] ? "" : currentCalendar.name);
+            setValues(displayCalendars === [] ? [] : currentCalendar.collaborators);
+            setActiveID(displayCalendars === [] ? 0 : currentCalendar.id);
+            setSettingsDialogOpen(true);
+        }
     }
 
     const handleSettingsDialogClose = () => {
@@ -333,7 +337,7 @@ const NavBar = (props) => {
                                         <ListItemText textAlign="left"
                                                       style={{marginRight: '10px'}}>{cal.name}</ListItemText>
                                     </MenuItem>)
-                                }
+                                } 
                             })
                         }
                             <MenuItem onClick={mergeCalendars}>
@@ -356,7 +360,7 @@ const NavBar = (props) => {
                         open={Boolean(anchorElCalendar)}
                         onClose={handleCloseSettingsMenu}
                         >
-                        <MenuItem onClick={handleSettingsDialogOpen}>
+                        <MenuItem onClick={currentCalendar.personal ? handleOpenSnackbar : handleSettingsDialogOpen}>
                             <ListItemText textAlign="left" style={{marginRight: '10px'}}>Settings</ListItemText>
                         </MenuItem>
                         <MenuItem onClick={!currentCalendar.personal ? handleDeleteDialogOpen : handleOpenSnackbar}>
@@ -396,9 +400,9 @@ const NavBar = (props) => {
                                         <Grid container>
                                             <Grid item xs={12}>
                                                 <div className={"container"}>
-                                                    {currentCalendar.id !== 0 && values.map((item,index) => (
+                                                    {currentCalendar.id !== 0 ? values.map((item,index) => (
                                                         <Chip size="small" onDelete={()=>handleDelete(item,index)} label={item}/>
-                                                        ))}
+                                                        )) : null}
                                                 </div>
                                             </Grid>
                                             <Grid item xs={12}>
@@ -512,7 +516,7 @@ const NavBar = (props) => {
             open={snackbarOpen}
             autoHideDuration={6000}
             onClose={handleCloseSnackbar}
-            message="You Cannot Delete Your Personal Calendar"
+            message="You Cannot Edit / Delete Your Personal Calendar"
             action={action}
             />
         </>
